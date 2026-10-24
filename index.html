@@ -472,6 +472,177 @@
 
 
         
+        
+        <!-- ========================================================================= -->
+        <!-- MÓDULO ETL DRIVE: MODELO DE CLASIFICACIÓN DE PERFILES DE SUICIDIO LABORAL -->
+        <!-- ========================================================================= -->
+        <section class="card-panel border-indigo-500/50 bg-slate-800/95 shadow-2xl space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 border-b border-slate-700 pb-4">
+                <div>
+                    <div class="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-wider">
+                        <i data-lucide="cpu" class="w-4 h-4"></i> Resultados del Pipeline ETL & Machine Learning (Drive: PROYECTO INTEGRADOR)
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white flex items-center gap-2 mt-1">
+                        <i data-lucide="binary" class="w-6 h-6 text-indigo-400"></i> Clasificación Supervisada de Perfiles Psicosociales por Causa Laboral / Económica
+                    </h3>
+                    <p class="text-xs text-slate-300">Modelado predictivo sobre <strong>30.932 registros armonizados de Medicina Legal (INMLCF 2015–2026)</strong> y clustering sociodemográfico GEIH (DANE).</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center gap-1.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4"></i> ETL Sincronizado
+                    </span>
+                </div>
+            </div>
+
+            <!-- Grid de Métricas de Evaluación del Modelo -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-4 bg-slate-900/90 rounded-xl border border-indigo-500/30">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Universo de Datos INMLCF</p>
+                    <p class="text-2xl font-black text-white mt-1">30.932</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Casos evaluados (2015–2026)</p>
+                    <div class="mt-2 text-[10px] text-indigo-300 bg-indigo-950/60 p-1.5 rounded border border-indigo-800/40">
+                        14.464 casos con causa conocida (46.8%)
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-900/90 rounded-xl border border-indigo-500/30">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Prevalencia Causa Económica</p>
+                    <p class="text-2xl font-bold text-amber-400 mt-1">13,6%</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">1.961 casos etiquetados (Clase 1)</p>
+                    <div class="mt-2 text-[10px] text-amber-300 bg-amber-950/60 p-1.5 rounded border border-amber-800/40">
+                        Frenos financieros & desocupación
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-900/90 rounded-xl border border-indigo-500/30">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Rendimiento ROC-AUC (2025–2026)</p>
+                    <p class="text-2xl font-bold text-emerald-400 mt-1">0,702</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">IC 95%: [0,669 – 0,739]</p>
+                    <div class="mt-2 text-[10px] text-emerald-300 bg-emerald-950/60 p-1.5 rounded border border-emerald-800/40">
+                        Prueba final fuera de muestra
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-900/90 rounded-xl border border-indigo-500/30">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Factor de Elevación (Lift @ 20%)</p>
+                    <p class="text-2xl font-bold text-sky-400 mt-1">2,04x</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Captura 40,8% de casos en quintil 1</p>
+                    <div class="mt-2 text-[10px] text-sky-300 bg-sky-950/60 p-1.5 rounded border border-sky-800/40">
+                        2 veces superior a la selección aleatoria
+                    </div>
+                </div>
+            </div>
+
+            <!-- Análisis de Importancia de Variables y Perfiles por Categoria -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <!-- Columna Izquierda: Ranking de Importancia de Variables en el Modelo ML -->
+                <div class="lg:col-span-6 bg-slate-900/80 p-4 rounded-xl border border-slate-700 space-y-3 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-xs font-bold text-indigo-300 uppercase tracking-wider flex items-center gap-1.5 mb-2">
+                            <i data-lucide="bar-chart-horizontal" class="w-4 h-4 text-indigo-400"></i> Importancia de Variables en el Modelo (Caída de AUC)
+                        </h4>
+                        <p class="text-xs text-slate-300 mb-3">
+                            Sensibilidad del modelo predictivo al permutarse cada variable sociodemográfica:
+                        </p>
+                        <div class="space-y-2 text-xs">
+                            <div>
+                                <div class="flex justify-between text-slate-200 mb-1">
+                                    <span>1. Ciclo Vital (Adultez vs Juventud)</span>
+                                    <strong class="text-indigo-400">+0,0739 AUC</strong>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-indigo-500 h-2 rounded-full" style="width: 100%;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-slate-200 mb-1">
+                                    <span>2. Rango de Edad Quinquenal</span>
+                                    <strong class="text-indigo-400">+0,0321 AUC</strong>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-indigo-400 h-2 rounded-full" style="width: 43%;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-slate-200 mb-1">
+                                    <span>3. Mecanismo Causal de la Lesión</span>
+                                    <strong class="text-indigo-400">+0,0252 AUC</strong>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-sky-400 h-2 rounded-full" style="width: 34%;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-slate-200 mb-1">
+                                    <span>4. Sexo de la Víctima</span>
+                                    <strong class="text-indigo-400">+0,0241 AUC</strong>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-sky-500 h-2 rounded-full" style="width: 32%;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-slate-200 mb-1">
+                                    <span>5. Escenario & Pertenencia Grupal</span>
+                                    <strong class="text-slate-400">+0,0086 AUC</strong>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-slate-500 h-2 rounded-full" style="width: 12%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-3 pt-2 border-t border-slate-800">
+                        Fuente: Pipeline ETL `clasificacion_causa_laboral.py` exportado a `salida_clasificacion/importancia_variables.csv`
+                    </p>
+                </div>
+
+                <!-- Columna Derecha: Concentración por Rangos de Edad y Sexo (Perfil Demográfico de Mayor Riesgo) -->
+                <div class="lg:col-span-6 bg-slate-900/80 p-4 rounded-xl border border-slate-700 space-y-3 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5 mb-2">
+                            <i data-lucide="users" class="w-4 h-4 text-amber-400"></i> Perfil Demográfico de Mayor Riesgo Psicosocial Laboral
+                        </h4>
+                        <p class="text-xs text-slate-300 mb-2">
+                            Porcentaje de casos con detonante económico/laboral según categorías específicas:
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-2 text-xs mb-3">
+                            <div class="p-2.5 bg-slate-800/90 rounded border border-slate-700">
+                                <span class="text-slate-400 block text-[11px]">Hombres:</span>
+                                <strong class="text-rose-400 text-sm">15,2%</strong> <span class="text-[10px] text-slate-400">(1.735 casos)</span>
+                            </div>
+                            <div class="p-2.5 bg-slate-800/90 rounded border border-slate-700">
+                                <span class="text-slate-400 block text-[11px]">Mujeres:</span>
+                                <strong class="text-slate-300 text-sm">7,4%</strong> <span class="text-[10px] text-slate-400">(226 casos)</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5 text-xs text-slate-200 bg-slate-800/60 p-3 rounded-lg border border-slate-700/80">
+                            <p class="font-bold text-amber-300 text-[11px] uppercase border-b border-slate-700 pb-1">
+                                Incidencia % por Rangos Quinquenales de Edad:
+                            </p>
+                            <div class="flex justify-between py-0.5"><span>• Edad 55 a 59 años:</span> <strong class="text-rose-400 font-bold">25,2% de los casos</strong></div>
+                            <div class="flex justify-between py-0.5"><span>• Edad 50 a 54 años:</span> <strong class="text-rose-400 font-bold">22,4% de los casos</strong></div>
+                            <div class="flex justify-between py-0.5"><span>• Edad 60 a 64 años:</span> <strong class="text-amber-400 font-bold">21,7% de los casos</strong></div>
+                            <div class="flex justify-between py-0.5"><span>• Edad 65 a 69 años:</span> <strong class="text-amber-400 font-bold">21,3% de los casos</strong></div>
+                            <div class="flex justify-between py-0.5"><span>• Edad 45 a 49 años:</span> <strong class="text-amber-400 font-bold">20,2% de los casos</strong></div>
+                            <div class="flex justify-between py-0.5 border-t border-slate-700/60 pt-1 text-slate-400"><span>• Juventud 18 a 28 años:</span> <strong>8,9%</strong></div>
+                            <div class="flex justify-between text-slate-400"><span>• Adolescencia 12 a 17 años:</span> <strong>2,3%</strong></div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-2">
+                        El colapso económico impacta con mayor severidad a personas en edad adulta madura (45–64 años) a cargo del sostén familiar.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
         <!-- ========================================================================= -->
         <!-- SECCIÓN 3: RANKING DE MAYORES CASOS DE SUICIDIO EN COLOMBIA (2015-2026) -->
         <!-- ========================================================================= -->
