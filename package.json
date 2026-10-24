@@ -1,0 +1,12 @@
+{
+  "name": "observatorio-salud-mental-laboral",
+  "version": "1.0.0",
+  "description": "Observatorio del Mercado Laboral y Salud Mental en Colombia (Microdatos 2015-2026)",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
