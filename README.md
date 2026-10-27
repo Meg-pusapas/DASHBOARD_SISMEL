@@ -1,23 +1,29 @@
-# Observatorio del Mercado Laboral y Salud Mental en Colombia (2015–2026)
+# Observatorio del Mercado Laboral & Salud Mental en Colombia
+> **Foco Territorial en Pasto (Nariño) y Análisis Comparativo sobre 23 Ciudades**
 
-Este proyecto despliega una plataforma analítica e interactiva basada en **30.932 registros oficiales de Medicina Legal (INMLCF)** y microdatos de la **Gran Encuesta Integrada de Hogares (GEIH - DANE)** para 23 ciudades de Colombia entre 2015 y 2026.
+Este proyecto integra tres enfoques analíticos de datos socioeconómicos y de salud pública en Colombia:
+1. **Mercado Laboral GEIH (DANE):** Clasificación por clústeres K-Means y Proyección PCA sobre calidad contractual e informalidad.
+2. **Registros Médico-Legales INMLCF (2015–2026):** Mapeo geográfico de lesiones fatales con detonante económico/laboral.
+3. **Pipeline SISMEL Machine Learning:** Clasificación supervisada (Random Forest y Gradient Boosting) de perfiles de riesgo psicosocial.
 
-## 🚀 Despliegue en Vercel
+---
 
-### Opción 1: Mediante la CLI de Vercel
-1. Instala Vercel CLI: `npm i -g vercel`
-2. Ejecuta `vercel` en la carpeta raíz del proyecto.
-3. Sigue las instrucciones en pantalla.
+## 🎨 Estructura del Sitio Web
+- **Diseño Editorial:** Paleta en tonos Crema (`#f7f4ed`), Granate (`#9b2c2c`) y Ámbar.
+- **Carga Asíncrona:** Interfaz desacoplada alimentada dinámicamente desde `cityData.json`.
+- **Módulos Interactivos:**
+  - Selector de ciudades sincronizado.
+  - Mapa geográfico con capa Leaflet Heat.
+  - Gráficos combinados de series temporales (2015–2026).
+  - Desglose de causas médico-legales y correlación de Spearman.
+  - Métricas e importancia de variables del modelo de Machine Learning.
+  - Matriz interactiva de datos con búsqueda y filtros por clúster.
 
-### Opción 2: Vinculando con GitHub
-1. Crea un repositorio en GitHub y sube los archivos de este directorio (`index.html`, `package.json`, `vercel.json`, `README.md`).
-2. Entra a [Vercel](https://vercel.com) e importa tu repositorio.
-3. Vercel detectará la configuración estática (`@vercel/static`) y desplegará la web automáticamente con un dominio gratis `.vercel.app`.
+---
 
-## 📊 Módulos Incluidos en el Dashboard (`index.html`)
+## 🚀 Despliegue Local
+Para ejecutar la aplicación en tu máquina local:
 
-1. **Mapa de Calor Interactivo (Leaflet.heat):** Visualiza la concentración absoluta y la incidencia relativa de suicidios por razones económicas y laborales por departamento y ciudad.
-2. **Serie Temporal 2015–2026 (12 Años):** Gráfico combinado con doble eje Y que superpone la evolución del empleo, desempleo, precarización y formalidad con la curva anual de suicidios.
-3. **Módulo de Clasificación de Riesgo de Salud Mental (Machine Learning):** Modelo predictivo supervisado (AUC-ROC 0.70) basado en perfilamiento de vulnerabilidad.
-4. **Matriz de Agrupación Territorial (Clustering K-Means + PCA):** Clasificación en 3 clústeres socio-laborales para las 23 principales ciudades del país.
-5. **Matriz Ejecutiva Completa:** Tabla navegable e interactiva con filtrado en tiempo real.
+```bash
+# Servidor HTTP simple de Python
+python -m http.server 8000
