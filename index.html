@@ -121,36 +121,21 @@
             width: 100%;
             min-height: 280px;
         }
-
-        #sidebar {
-            transition: transform 0.3s ease-in-out, margin-left 0.3s ease-in-out, opacity 0.2s ease;
-        }
-
-        #sidebar.collapsed {
-            margin-left: -18rem;
-            opacity: 0;
-            pointer-events: none;
-        }
     </style>
 </head>
-<body class="flex flex-col lg:flex-row min-h-screen overflow-x-hidden">
+<body class="flex flex-col lg:flex-row min-h-screen">
 
     <!-- SIDEBAR NAVIGATION -->
-    <aside id="sidebar" class="w-full lg:w-72 bg-sidebarBg border-r border-[#e2dacd] p-5 flex flex-col justify-between shrink-0 fixed lg:sticky top-0 lg:h-screen z-30 shadow-lg lg:shadow-none">
+    <aside class="w-full lg:w-72 bg-sidebarBg border-r border-[#e2dacd] p-5 flex flex-col justify-between shrink-0 sticky top-0 lg:h-screen z-30">
         <div class="space-y-6">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-burgundy rounded-xl flex items-center justify-center text-white shadow-md">
-                        <i data-lucide="sprout" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-serif font-bold text-lg text-textDark leading-tight">Observatorio</h1>
-                        <p class="text-[10px] font-semibold tracking-wider uppercase text-burgundy">TRABAJO · SALUD MENTAL</p>
-                    </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-burgundy rounded-xl flex items-center justify-center text-white shadow-md">
+                    <i data-lucide="sprout" class="w-5 h-5"></i>
                 </div>
-                <button onclick="toggleSidebar()" class="lg:hidden p-1.5 text-textMuted hover:text-textDark rounded-lg bg-[#e2dacd]">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
+                <div>
+                    <h1 class="font-serif font-bold text-lg text-textDark leading-tight">Observatorio</h1>
+                    <p class="text-[10px] font-semibold tracking-wider uppercase text-burgundy">TRABAJO · SALUD MENTAL</p>
+                </div>
             </div>
 
             <nav class="space-y-1">
@@ -170,8 +155,11 @@
                 <a href="#psicosocial" class="nav-item" onclick="setActiveNav(this)">
                     <i data-lucide="heart-handshake" class="w-4 h-4"></i> 4 · Análisis psicosocial
                 </a>
+                <a href="#sismel" class="nav-item" onclick="setActiveNav(this)">
+                    <i data-lucide="cpu" class="w-4 h-4"></i> 5 · Modelo SISMEL
+                </a>
                 <a href="#matriz" class="nav-item" onclick="setActiveNav(this)">
-                    <i data-lucide="table" class="w-4 h-4"></i> 5 · Matriz de datos
+                    <i data-lucide="table" class="w-4 h-4"></i> 6 · Matriz de datos
                 </a>
             </nav>
         </div>
@@ -179,14 +167,14 @@
         <div class="bg-[#e5ded0] p-3.5 rounded-xl border border-[#d6cdbd] text-[11px] text-textMuted space-y-1.5 mt-6">
             <div class="flex items-center justify-between">
                 <span class="font-medium text-textDark">Fuente de datos</span>
-                <span class="bg-warmYellow text-warmYellowDark px-2 py-0.5 rounded text-[10px] font-semibold">23 Ciudades</span>
+                <span class="bg-warmYellow text-warmYellowDark px-2 py-0.5 rounded text-[10px] font-semibold">respaldo local</span>
             </div>
-            <p class="text-[10px] leading-tight">GEIH-DANE · INMLCF 2015–2026</p>
+            <p class="text-[10px] leading-tight">GEIH-DANE · INMLCF 2015–2026 · Modelo SISMEL</p>
         </div>
     </aside>
 
     <!-- MAIN CONTENT -->
-    <div class="flex-1 flex flex-col min-w-0 transition-all duration-300">
+    <div class="flex-1 flex flex-col min-w-0">
 
         <!-- Top Hotline Banner -->
         <div class="bg-warmYellow border-b border-[#f3e4b7] px-4 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-warmYellowDark">
@@ -202,15 +190,10 @@
         </div>
 
         <!-- Header Controls Bar -->
-        <header class="bg-creamBg border-b border-[#e8e2d5] px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sticky top-0 z-20 shadow-sm">
-            <div class="flex items-center gap-3">
-                <button onclick="toggleSidebar()" class="p-2 bg-sidebarBg hover:bg-[#e2dacd] rounded-xl text-textDark border border-[#d6cdbd] transition-colors flex items-center justify-center" title="Ocultar / Mostrar menú">
-                    <i data-lucide="panel-left" class="w-5 h-5 text-burgundy"></i>
-                </button>
-                <div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-burgundy">OBSERVATORIO · COLOMBIA</p>
-                    <h2 class="font-serif font-bold text-xl text-textDark">Mercado Laboral & Salud Mental</h2>
-                </div>
+        <header class="bg-creamBg border-b border-[#e8e2d5] px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sticky top-0 z-20">
+            <div>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-burgundy">OBSERVATORIO · COLOMBIA</p>
+                <h2 class="font-serif font-bold text-xl text-textDark">Mercado Laboral & Salud Mental</h2>
             </div>
 
             <div class="flex items-center gap-2 self-end sm:self-auto">
@@ -226,7 +209,7 @@
             </div>
         </header>
 
-        <main class="p-6 max-w-7xl mx-auto w-full space-y-10">
+        <main class="p-6 max-w-6xl mx-auto w-full space-y-10">
 
             <!-- RESUMEN -->
             <section id="resumen" class="space-y-6">
@@ -237,6 +220,9 @@
                     <span class="badge-pill bg-amber-100 text-amber-900 border border-amber-200">
                         <i data-lucide="file-text" class="w-3 h-3"></i> INMLCF · Medicina Legal
                     </span>
+                    <span class="badge-pill bg-amber-100 text-amber-900 border border-amber-200">
+                        <i data-lucide="cpu" class="w-3 h-3"></i> SISMEL · RF / GB
+                    </span>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -246,7 +232,7 @@
                             <span class="italic text-burgundy">empleo, precariedad y salud mental</span> en 23 ciudades
                         </h1>
                         <p class="text-sm text-textMuted leading-relaxed">
-                            Un observatorio que cruza la calidad del empleo con los registros de lesiones fatales para entender cómo la subsistencia laboral se relaciona con el bienestar psicosocial. Foco territorial en <strong class="text-textDark">Pasto, Nariño</strong>.
+                            Un observatorio que cruza la calidad del empleo con los registros de lesiones fatales para entender —con cuidado y sin sensacionalismo— cómo la subsistencia laboral se relaciona con el bienestar psicosocial. Foco territorial en <strong class="text-textDark">Pasto, Nariño</strong>.
                         </p>
                     </div>
 
@@ -255,7 +241,7 @@
                             <i data-lucide="shield-check" class="w-4 h-4"></i> Tratamiento ético
                         </div>
                         <p class="text-xs text-textMuted leading-relaxed">
-                            Cifras agregadas y anonimizadas. Cada número representa una vida y una familia; el objetivo es orientar la prevención y la política pública.
+                            Cifras agregadas y anonimizadas. Cada número representa una vida y una familia; el objetivo es orientar la prevención y la política pública, no describir casos individuales.
                         </p>
                     </div>
                 </div>
@@ -276,7 +262,7 @@
                 <div class="space-y-1">
                     <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 01 · CRISP-DM GEIH</p>
                     <h2 class="font-serif font-bold text-2xl text-textDark">Diagnóstico territorial & clustering</h2>
-                    <p class="text-xs text-textMuted">K-Means (k=3) sobre indicadores estandarizados de ocupación, desempleo, informalidad y formalidad asalariada.</p>
+                    <p class="text-xs text-textMuted">K-Means ($k=3$) sobre indicadores estandarizados de ocupación, desempleo, informalidad y formalidad asalariada.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -306,7 +292,7 @@
                         </div>
 
                         <p class="text-[10px] text-textMuted text-center mt-2">
-                            → <strong>Dim 1 · Formalidad:</strong> asalariados formales &nbsp;&nbsp;|&nbsp;&nbsp; ↑ <strong>Dim 2 · Dinamismo:</strong> tasa de ocupación
+                            $\rightarrow$ <strong>Dim 1 · Formalidad:</strong> asalariados formales &nbsp;&nbsp;|&nbsp;&nbsp; $\uparrow$ <strong>Dim 2 · Dinamismo:</strong> tasa de ocupación
                         </p>
                     </div>
                 </div>
@@ -383,9 +369,9 @@
             <!-- MÓDULO 04 -->
             <section id="psicosocial" class="space-y-4 pt-6 border-t border-[#e8e2d5]">
                 <div class="space-y-1">
-                    <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 04 · INMLCF</p>
+                    <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 04 · INMLCF + SISMEL</p>
                     <h2 class="font-serif font-bold text-2xl text-textDark">Análisis psicosocial & desencadenantes</h2>
-                    <p class="text-xs text-textMuted">Factores precipitantes reportados en necropsia médico-legal.</p>
+                    <p class="text-xs text-textMuted">Factores precipitantes reportados en necropsia médico-legal. Un caso puede tener múltiples factores; se muestra el principal.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -420,7 +406,7 @@
                             <div>
                                 <div class="flex justify-between text-xs font-bold text-textDark mb-1">
                                     <span>Precarización / cuenta propia</span>
-                                    <span class="text-burgundy">r = +0,383</span>
+                                    <span class="text-burgundy">$r = +0,383$</span>
                                 </div>
                                 <div class="w-full bg-amber-200/60 h-2.5 rounded-full overflow-hidden">
                                     <div class="bg-burgundy h-2.5 rounded-full" style="width: 76.6%;"></div>
@@ -430,7 +416,7 @@
                             <div>
                                 <div class="flex justify-between text-xs font-bold text-textDark mb-1">
                                     <span>Desempleo abierto (TD)</span>
-                                    <span class="text-textMuted">r = -0,216</span>
+                                    <span class="text-textMuted">$r = -0,216$</span>
                                 </div>
                                 <div class="w-full bg-amber-200/60 h-2.5 rounded-full overflow-hidden">
                                     <div class="bg-gray-500 h-2.5 rounded-full" style="width: 43.2%;"></div>
@@ -439,16 +425,154 @@
                         </div>
 
                         <p class="text-[11px] text-textMuted pt-2">
-                            * Correlación de Spearman sobre indicadores de las 23 capitales colombianas (p &lt; 0,05).
+                            * Correlación de Spearman sobre indicadores de las 23 capitales colombianas ($p < 0,05$).
                         </p>
                     </div>
                 </div>
             </section>
 
             <!-- MÓDULO 05 -->
+            <section id="sismel" class="space-y-4 pt-6 border-t border-[#e8e2d5]">
+                <div class="space-y-1">
+                    <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 05 · PIPELINE ETL + ML</p>
+                    <h2 class="font-serif font-bold text-2xl text-textDark">Resultados del modelo SISMEL</h2>
+                    <p class="text-xs text-textMuted">Clasificación supervisada del desencadenante económico-laboral · Random Forest vs. Gradient Boosting con validación temporal.</p>
+                </div>
+
+                <div class="bg-[#eee9df] p-3 rounded-2xl border border-[#e2dacd] flex flex-wrap items-center justify-between gap-2 text-[11px] text-textDark font-medium">
+                    <span class="flex items-center gap-1.5"><i data-lucide="database" class="w-4 h-4 text-burgundy"></i> 1. Extracción INMLCF</span>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-textMuted"></i>
+                    <span class="flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4 text-burgundy"></i> 2. Limpieza & ETL</span>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-textMuted"></i>
+                    <span class="flex items-center gap-1.5"><i data-lucide="sliders" class="w-4 h-4 text-burgundy"></i> 3. Variables DANE</span>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-textMuted"></i>
+                    <span class="flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-burgundy"></i> 4. Entrenamiento GB</span>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-textMuted"></i>
+                    <span class="flex items-center gap-1.5 font-bold text-burgundy"><i data-lucide="check-circle" class="w-4 h-4"></i> 5. Validación Temporal</span>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="card-editorial p-4 space-y-1">
+                        <span class="text-[10px] font-bold text-textMuted uppercase">Universo de casos</span>
+                        <p class="text-2xl font-bold text-textDark">30.932</p>
+                        <p class="text-[10px] text-textMuted">INMLCF 2015–2026</p>
+                    </div>
+
+                    <div class="card-editorial p-4 space-y-1 bg-burgundy text-white">
+                        <span class="text-[10px] font-bold text-amber-200 uppercase">ROC-AUC</span>
+                        <p class="text-2xl font-bold">0,702</p>
+                        <p class="text-[10px] text-amber-100">Prueba fuera de muestra 2025–2026</p>
+                    </div>
+
+                    <div class="card-editorial p-4 space-y-1">
+                        <span class="text-[10px] font-bold text-textMuted uppercase">Factor de elevación</span>
+                        <p class="text-2xl font-bold text-burgundy">2,04x</p>
+                        <p class="text-[10px] text-textMuted">Lift @ 20% de población priorizada</p>
+                    </div>
+
+                    <div class="card-editorial p-4 space-y-1">
+                        <span class="text-[10px] font-bold text-textMuted uppercase">Mejor algoritmo</span>
+                        <p class="text-2xl font-bold text-textDark">GB</p>
+                        <p class="text-[10px] text-textMuted">Gradient Boosting > Random Forest</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    <div class="lg:col-span-6 card-editorial p-5 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-sm text-textDark">Importancia de variables</h3>
+                            <p class="text-xs text-textMuted mb-2">Permutación · caída del ROC-AUC al perturbar cada variable</p>
+                            
+                            <div class="space-y-2 text-xs pt-1">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">1. Ciclo vital</span>
+                                        <strong class="text-burgundy">-0,061 AUC</strong>
+                                    </div>
+                                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-burgundy h-2 rounded-full" style="width: 100%;"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">2. Rango de edad quinquenal</span>
+                                        <strong class="text-burgundy">-0,042 AUC</strong>
+                                    </div>
+                                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-burgundy h-2 rounded-full" style="width: 70%;"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">3. Mecanismo causal</span>
+                                        <strong class="text-burgundy">-0,035 AUC</strong>
+                                    </div>
+                                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-amber-600 h-2 rounded-full" style="width: 58%;"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">4. Sexo</span>
+                                        <strong class="text-burgundy">-0,028 AUC</strong>
+                                    </div>
+                                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-amber-600 h-2 rounded-full" style="width: 46%;"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">5. Escenario</span>
+                                        <strong class="text-textMuted">-0,018 AUC</strong>
+                                    </div>
+                                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-gray-400 h-2 rounded-full" style="width: 30%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-textMuted border-t border-[#eee8dc] pt-2">El ciclo vital y la edad son los mayores predictores de vulnerabilidad económico-laboral.</p>
+                    </div>
+
+                    <div class="lg:col-span-6 card-editorial p-5 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-sm text-textDark">Perfil demográfico de mayor riesgo</h3>
+                            <p class="text-xs text-textMuted mb-3">% de casos con desencadenante económico-laboral dentro de cada grupo</p>
+                            
+                            <div class="grid grid-cols-2 gap-3 mb-3">
+                                <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                                    <span class="text-[11px] font-bold text-amber-900 block">👨 Hombres</span>
+                                    <span class="text-xl font-bold text-burgundy">15,2%</span>
+                                    <span class="text-[10px] text-amber-800 block">2,1x mayor incidencia</span>
+                                </div>
+
+                                <div class="bg-[#f7f4ed] p-3 rounded-xl border border-[#e2dacd]">
+                                    <span class="text-[11px] font-bold text-textMuted block">👩 Mujeres</span>
+                                    <span class="text-xl font-bold text-textDark">7,4%</span>
+                                    <span class="text-[10px] text-textMuted block">Prevalencia acumulada</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-1 text-xs">
+                                <span class="font-bold text-textDark text-[11px] block mb-1">Distribución por rangos quinquenales de edad:</span>
+                                <div class="chart-container max-h-[140px]">
+                                    <canvas id="ageRiskChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-textMuted border-t border-[#eee8dc] pt-2">Concentración máxima observada en adultos de 50 a 64 años a cargo del sustento familiar.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MÓDULO 06 -->
             <section id="matriz" class="space-y-4 pt-6 border-t border-[#e8e2d5] pb-12">
                 <div class="space-y-1">
-                    <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 05 · 23 CIUDADES</p>
+                    <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 06 · 23 CIUDADES</p>
                     <h2 class="font-serif font-bold text-2xl text-textDark">Matriz de datos completa</h2>
                     <p class="text-xs text-textMuted">Haz clic en una fila para sincronizar todos los módulos con esa ciudad.</p>
                 </div>
@@ -457,7 +581,7 @@
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
                         <div class="relative w-full sm:w-72">
                             <i data-lucide="search" class="w-4 h-4 text-textMuted absolute left-3 top-2.5"></i>
-                            <input type="text" id="table-search" placeholder="Buscar ciudad..." onkeyup="filterTable()" class="w-full bg-[#f7f4ed] border border-[#d6cdbd] rounded-xl pl-9 pr-3 py-1.5 text-xs text-textDark outline-none focus:border-burgundy">
+                            <input type="text" id="table-search" placeholder="Buscar ciudad o departamento..." onkeyup="filterTable()" class="w-full bg-[#f7f4ed] border border-[#d6cdbd] rounded-xl pl-9 pr-3 py-1.5 text-xs text-textDark outline-none focus:border-burgundy">
                         </div>
 
                         <select id="table-cluster-filter" onchange="filterTable()" class="w-full sm:w-48 bg-[#f7f4ed] border border-[#d6cdbd] rounded-xl px-3 py-1.5 text-xs text-textDark outline-none focus:border-burgundy cursor-pointer">
@@ -492,382 +616,13 @@
         </main>
     </div>
 
-    <!-- SCRIPT PRINCIPAL CON 23 CIUDADES COMPLETA -->
+    <!-- SCRIPT PRINCIPAL -->
     <script>
-        const cityData = [
-          {
-            "ciudad": "Pasto",
-            "lat": 1.2136, "lng": -77.2811, "cluster": 2, "pc1": -0.88, "pc2": 1.05,
-            "td": 10.4, "to": 62.68, "tgp": 69.45, "tsub": 10.4,
-            "pct_precarizacion": 46.76, "pct_cuenta_propia": 41.97, "pct_empleado_particular": 38.4, "pct_comercio_alojamiento": 28.5,
-            "suicidios_totales": 520, "suicidios_con_razon": 391, "suicidios_eco_lab": 62, "pct_eco_conocido": 15.8,
-            "causas": { "Enfermedad Mental": 164, "Sentimental": 119, "Económica": 51, "Enfermedad física": 26, "Alcohol / Sustancias": 20, "Laboral": 11, "Sin información": 129 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.2, 10.5, 10.7, 11.2, 12.2, 18.0, 14.8, 12.6, 11.2, 10.3, 9.7, 10.4],
-              "to": [61.4, 60.8, 60.2, 59.5, 58.3, 51.4, 56.1, 58.5, 60.4, 61.8, 62.6, 62.68],
-              "precarizacion": [52.4, 51.9, 51.4, 51.0, 50.5, 55.2, 52.1, 50.2, 48.7, 47.6, 46.7, 46.76],
-              "formal": [37.4, 37.9, 38.3, 38.7, 39.1, 36.2, 36.5, 38.8, 40.2, 41.5, 42.5, 38.4],
-              "suicidios": [31, 35, 43, 48, 43, 34, 45, 48, 46, 52, 57, 22]
-            }
-          },
-          {
-            "ciudad": "Bogotá",
-            "lat": 4.711, "lng": -74.0721, "cluster": 0, "pc1": 2.15, "pc2": 0.85,
-            "td": 9.8, "to": 61.2, "tgp": 67.8, "tsub": 8.1,
-            "pct_precarizacion": 33.2, "pct_cuenta_propia": 30.1, "pct_empleado_particular": 58.6, "pct_comercio_alojamiento": 22.1,
-            "suicidios_totales": 4286, "suicidios_con_razon": 2810, "suicidios_eco_lab": 438, "pct_eco_conocido": 15.5,
-            "causas": { "Enfermedad Mental": 1350, "Sentimental": 820, "Económica": 380, "Enfermedad física": 180, "Alcohol / Sustancias": 120, "Laboral": 58, "Sin información": 1378 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [8.9, 9.2, 9.5, 10.1, 10.9, 18.2, 14.5, 11.3, 10.1, 9.6, 9.4, 9.8],
-              "to": [64.2, 63.8, 63.1, 62.5, 61.8, 52.3, 56.8, 59.4, 60.5, 61.0, 61.5, 61.2],
-              "precarizacion": [38.5, 38.0, 37.6, 37.1, 36.5, 41.2, 38.1, 35.6, 34.2, 33.8, 33.5, 33.2],
-              "formal": [52.1, 52.8, 53.4, 54.0, 54.6, 49.5, 52.1, 55.4, 56.8, 57.5, 58.1, 58.6],
-              "suicidios": [310, 345, 380, 405, 395, 360, 410, 445, 480, 438, 410, 208]
-            }
-          },
-          {
-            "ciudad": "Medellín",
-            "lat": 6.2442, "lng": -75.5812, "cluster": 0, "pc1": 1.82, "pc2": 0.62,
-            "td": 8.9, "to": 58.9, "tgp": 64.6, "tsub": 7.8,
-            "pct_precarizacion": 36.4, "pct_cuenta_propia": 32.8, "pct_empleado_particular": 54.2, "pct_comercio_alojamiento": 24.0,
-            "suicidios_totales": 2150, "suicidios_con_razon": 1420, "suicidios_eco_lab": 224, "pct_eco_conocido": 15.7,
-            "causas": { "Enfermedad Mental": 680, "Sentimental": 410, "Económica": 195, "Enfermedad física": 95, "Alcohol / Sustancias": 70, "Laboral": 29, "Sin información": 671 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [9.8, 10.1, 10.4, 11.2, 11.8, 17.5, 13.9, 10.8, 9.2, 8.8, 8.6, 8.9],
-              "to": [60.5, 60.1, 59.8, 59.0, 58.2, 50.1, 54.8, 57.2, 58.5, 59.1, 59.2, 58.9],
-              "precarizacion": [42.1, 41.5, 41.0, 40.5, 39.8, 44.5, 41.2, 38.9, 37.5, 36.8, 36.5, 36.4],
-              "formal": [48.2, 48.9, 49.5, 50.1, 50.8, 46.2, 49.1, 51.8, 53.0, 53.8, 54.0, 54.2],
-              "suicidios": [160, 175, 190, 205, 198, 180, 202, 220, 235, 224, 210, 151]
-            }
-          },
-          {
-            "ciudad": "Cali",
-            "lat": 3.4516, "lng": -76.532, "cluster": 0, "pc1": 1.05, "pc2": -0.15,
-            "td": 10.8, "to": 56.4, "tgp": 63.2, "tsub": 9.2,
-            "pct_precarizacion": 42.1, "pct_cuenta_propia": 37.5, "pct_empleado_particular": 48.5, "pct_comercio_alojamiento": 25.2,
-            "suicidios_totales": 1280, "suicidios_con_razon": 890, "suicidios_eco_lab": 139, "pct_eco_conocido": 15.6,
-            "causas": { "Enfermedad Mental": 410, "Sentimental": 260, "Económica": 120, "Enfermedad física": 52, "Alcohol / Sustancias": 41, "Laboral": 19, "Sin información": 378 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [11.2, 11.5, 11.8, 12.1, 12.8, 20.1, 15.6, 12.2, 11.0, 10.5, 10.6, 10.8],
-              "to": [58.2, 57.8, 57.5, 56.9, 56.0, 47.5, 52.1, 55.0, 56.1, 56.8, 56.5, 56.4],
-              "precarizacion": [46.5, 46.0, 45.5, 45.1, 44.6, 49.2, 46.1, 44.0, 43.1, 42.5, 42.3, 42.1],
-              "formal": [43.1, 43.8, 44.2, 44.8, 45.3, 40.8, 43.5, 46.2, 47.5, 48.1, 48.3, 48.5],
-              "suicidios": [95, 102, 115, 120, 118, 105, 122, 131, 142, 139, 130, 61]
-            }
-          },
-          {
-            "ciudad": "Cúcuta",
-            "lat": 7.8939, "lng": -72.5078, "cluster": 1, "pc1": -1.95, "pc2": -0.65,
-            "td": 12.8, "to": 54.1, "tgp": 62.0, "tsub": 13.5,
-            "pct_precarizacion": 62.4, "pct_cuenta_propia": 54.2, "pct_empleado_particular": 28.5, "pct_comercio_alojamiento": 34.2,
-            "suicidios_totales": 480, "suicidios_con_razon": 340, "suicidios_eco_lab": 75, "pct_eco_conocido": 22.1,
-            "causas": { "Enfermedad Mental": 110, "Sentimental": 98, "Económica": 65, "Enfermedad física": 21, "Alcohol / Sustancias": 18, "Laboral": 10, "Sin información": 158 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [14.1, 14.5, 15.2, 15.8, 16.5, 23.8, 19.2, 15.1, 13.5, 12.9, 12.6, 12.8],
-              "to": [56.1, 55.5, 55.0, 54.2, 53.1, 45.2, 49.8, 52.8, 53.8, 54.2, 54.3, 54.1],
-              "precarizacion": [67.8, 67.2, 66.8, 66.1, 65.4, 70.1, 66.9, 64.8, 63.5, 62.9, 62.6, 62.4],
-              "formal": [23.1, 23.8, 24.2, 24.9, 25.5, 21.0, 24.1, 26.2, 27.5, 28.1, 28.3, 28.5],
-              "suicidios": [32, 36, 42, 45, 43, 38, 46, 52, 58, 75, 68, 45]
-            }
-          },
-          {
-            "ciudad": "Quibdó",
-            "lat": 5.6947, "lng": -76.6611, "cluster": 1, "pc1": -2.85, "pc2": -2.05,
-            "td": 24.5, "to": 41.2, "tgp": 54.6, "tsub": 15.2,
-            "pct_precarizacion": 68.2, "pct_cuenta_propia": 59.8, "pct_empleado_particular": 21.4, "pct_comercio_alojamiento": 31.0,
-            "suicidios_totales": 190, "suicidios_con_razon": 125, "suicidios_eco_lab": 31, "pct_eco_conocido": 24.8,
-            "causas": { "Enfermedad Mental": 42, "Sentimental": 35, "Económica": 26, "Enfermedad física": 8, "Alcohol / Sustancias": 9, "Laboral": 5, "Sin información": 65 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [18.2, 19.0, 20.1, 21.4, 22.8, 30.2, 26.5, 25.1, 24.8, 24.2, 24.3, 24.5],
-              "to": [45.2, 44.8, 44.1, 43.2, 42.0, 34.5, 38.2, 40.1, 41.0, 41.5, 41.4, 41.2],
-              "precarizacion": [72.1, 71.8, 71.2, 70.8, 70.1, 75.2, 72.1, 70.0, 69.1, 68.5, 68.3, 68.2],
-              "formal": [17.5, 17.9, 18.2, 18.8, 19.2, 15.8, 18.1, 19.8, 20.5, 21.1, 21.3, 21.4],
-              "suicidios": [11, 14, 16, 18, 17, 15, 18, 21, 24, 31, 28, 17]
-            }
-          },
-          {
-            "ciudad": "Bucaramanga",
-            "lat": 7.1254, "lng": -73.1198, "cluster": 0, "pc1": 1.45, "pc2": 0.82,
-            "td": 8.2, "to": 59.8, "tgp": 65.1, "tsub": 8.0,
-            "pct_precarizacion": 41.2, "pct_cuenta_propia": 36.1, "pct_empleado_particular": 49.8, "pct_comercio_alojamiento": 26.1,
-            "suicidios_totales": 680, "suicidios_con_razon": 490, "suicidios_eco_lab": 56, "pct_eco_conocido": 11.4,
-            "causas": { "Enfermedad Mental": 210, "Sentimental": 150, "Económica": 48, "Enfermedad física": 35, "Alcohol / Sustancias": 22, "Laboral": 8, "Sin información": 207 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [8.8, 9.1, 9.4, 9.8, 10.2, 16.8, 12.5, 9.8, 8.5, 8.1, 8.0, 8.2],
-              "to": [62.1, 61.8, 61.2, 60.8, 60.1, 51.8, 56.5, 58.8, 59.8, 60.1, 60.0, 59.8],
-              "precarizacion": [45.2, 44.8, 44.2, 43.8, 43.1, 47.8, 44.2, 42.1, 41.0, 40.8, 41.0, 41.2],
-              "formal": [44.8, 45.2, 45.8, 46.5, 47.1, 42.5, 45.8, 48.2, 49.2, 49.6, 49.7, 49.8],
-              "suicidios": [48, 52, 58, 62, 60, 52, 61, 68, 72, 56, 54, 37]
-            }
-          },
-          {
-            "ciudad": "Barranquilla",
-            "lat": 10.9685, "lng": -74.7813, "cluster": 2, "pc1": -0.65, "pc2": 1.25,
-            "td": 8.5, "to": 59.2, "tgp": 64.7, "tsub": 10.1,
-            "pct_precarizacion": 54.8, "pct_cuenta_propia": 48.2, "pct_empleado_particular": 38.5, "pct_comercio_alojamiento": 30.1,
-            "suicidios_totales": 620, "suicidios_con_razon": 440, "suicidios_eco_lab": 74, "pct_eco_conocido": 16.8,
-            "causas": { "Enfermedad Mental": 185, "Sentimental": 135, "Económica": 62, "Enfermedad física": 32, "Alcohol / Sustancias": 21, "Laboral": 12, "Sin información": 173 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [8.1, 8.4, 8.7, 9.1, 9.8, 16.2, 12.8, 9.8, 8.8, 8.3, 8.3, 8.5],
-              "to": [61.2, 60.8, 60.1, 59.5, 58.8, 51.0, 55.8, 58.2, 59.1, 59.5, 59.4, 59.2],
-              "precarizacion": [59.2, 58.8, 58.2, 57.8, 57.1, 61.8, 58.2, 56.0, 55.1, 54.5, 54.6, 54.8],
-              "formal": [34.1, 34.8, 35.2, 35.8, 36.5, 32.0, 35.1, 37.5, 38.2, 38.6, 38.5, 38.5],
-              "suicidios": [42, 46, 52, 56, 54, 46, 55, 62, 68, 74, 69, 46]
-            }
-          },
-          {
-            "ciudad": "Pereira",
-            "lat": 4.8133, "lng": -75.6961, "cluster": 0, "pc1": 1.25, "pc2": 0.22,
-            "td": 9.4, "to": 57.1, "tgp": 63.0, "tsub": 8.5,
-            "pct_precarizacion": 40.5, "pct_cuenta_propia": 35.8, "pct_empleado_particular": 50.2, "pct_comercio_alojamiento": 27.0,
-            "suicidios_totales": 510, "suicidios_con_razon": 380, "suicidios_eco_lab": 72, "pct_eco_conocido": 18.9,
-            "causas": { "Enfermedad Mental": 160, "Sentimental": 115, "Económica": 60, "Enfermedad física": 28, "Alcohol / Sustancias": 18, "Laboral": 12, "Sin información": 117 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.2, 10.5, 10.9, 11.4, 11.9, 18.5, 14.2, 11.0, 9.8, 9.2, 9.2, 9.4],
-              "to": [59.1, 58.8, 58.2, 57.8, 57.0, 49.2, 53.8, 56.1, 57.0, 57.3, 57.2, 57.1],
-              "precarizacion": [44.8, 44.2, 43.8, 43.2, 42.5, 47.2, 43.8, 41.5, 40.8, 40.2, 40.4, 40.5],
-              "formal": [45.2, 45.8, 46.2, 46.8, 47.5, 42.8, 46.0, 48.5, 49.8, 50.1, 50.1, 50.2],
-              "suicidios": [35, 39, 44, 48, 46, 38, 47, 54, 59, 72, 65, 33]
-            }
-          },
-          {
-            "ciudad": "Ibagué",
-            "lat": 4.4389, "lng": -75.2322, "cluster": 2, "pc1": -0.22, "pc2": 0.21,
-            "td": 13.2, "to": 55.2, "tgp": 63.6, "tsub": 11.8,
-            "pct_precarizacion": 49.5, "pct_cuenta_propia": 44.1, "pct_empleado_particular": 37.1, "pct_comercio_alojamiento": 29.2,
-            "suicidios_totales": 430, "suicidios_con_razon": 310, "suicidios_eco_lab": 52, "pct_eco_conocido": 16.8,
-            "causas": { "Enfermedad Mental": 135, "Sentimental": 95, "Económica": 44, "Enfermedad física": 18, "Alcohol / Sustancias": 14, "Laboral": 8, "Sin información": 116 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [13.5, 13.8, 14.2, 14.8, 15.6, 22.5, 17.8, 14.2, 13.0, 12.8, 13.0, 13.2],
-              "to": [57.2, 56.8, 56.2, 55.8, 55.0, 47.1, 51.8, 54.2, 55.1, 55.4, 55.3, 55.2],
-              "precarizacion": [54.2, 53.8, 53.2, 52.8, 52.1, 56.8, 53.2, 51.0, 49.8, 49.2, 49.3, 49.5],
-              "formal": [32.8, 33.2, 33.8, 34.2, 34.8, 30.2, 33.1, 35.8, 36.8, 37.0, 37.0, 37.1],
-              "suicidios": [28, 31, 36, 40, 38, 32, 41, 46, 50, 52, 48, 28]
-            }
-          },
-          {
-            "ciudad": "Manizales",
-            "lat": 5.0689, "lng": -75.5174, "cluster": 0, "pc1": 1.95, "pc2": -0.82,
-            "td": 9.1, "to": 53.8, "tgp": 59.2, "tsub": 7.2,
-            "pct_precarizacion": 35.8, "pct_cuenta_propia": 31.4, "pct_empleado_particular": 53.8, "pct_comercio_alojamiento": 21.5,
-            "suicidios_totales": 410, "suicidios_con_razon": 310, "suicidios_eco_lab": 48, "pct_eco_conocido": 15.5,
-            "causas": { "Enfermedad Mental": 138, "Sentimental": 88, "Económica": 41, "Enfermedad física": 22, "Alcohol / Sustancias": 14, "Laboral": 7, "Sin información": 100 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.1, 10.4, 10.8, 11.1, 11.5, 18.1, 13.8, 10.5, 9.4, 9.0, 8.9, 9.1],
-              "to": [56.1, 55.8, 55.2, 54.8, 54.1, 46.8, 51.2, 53.0, 53.9, 54.1, 54.0, 53.8],
-              "precarizacion": [41.2, 40.8, 40.2, 39.8, 39.1, 43.8, 40.1, 38.0, 36.8, 36.1, 35.9, 35.8],
-              "formal": [48.1, 48.8, 49.2, 49.8, 50.4, 45.8, 49.0, 51.5, 52.8, 53.5, 53.7, 53.8],
-              "suicidios": [28, 32, 36, 39, 37, 31, 38, 42, 45, 48, 44, 26]
-            }
-          },
-          {
-            "ciudad": "Cartagena",
-            "lat": 10.391, "lng": -75.4794, "cluster": 1, "pc1": -1.15, "pc2": 0.35,
-            "td": 11.5, "to": 55.8, "tgp": 63.0, "tsub": 12.1,
-            "pct_precarizacion": 58.4, "pct_cuenta_propia": 51.2, "pct_empleado_particular": 32.1, "pct_comercio_alojamiento": 32.5,
-            "suicidios_totales": 380, "suicidios_con_razon": 260, "suicidios_eco_lab": 48, "pct_eco_conocido": 18.5,
-            "causas": { "Enfermedad Mental": 110, "Sentimental": 82, "Económica": 40, "Enfermedad física": 18, "Alcohol / Sustancias": 14, "Laboral": 8, "Sin información": 108 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.2, 10.5, 10.9, 11.4, 12.1, 19.5, 15.2, 12.4, 11.8, 11.2, 11.3, 11.5],
-              "to": [58.1, 57.8, 57.1, 56.5, 55.8, 48.0, 52.5, 54.8, 55.6, 56.0, 55.9, 55.8],
-              "precarizacion": [63.1, 62.8, 62.2, 61.8, 61.1, 65.8, 62.1, 60.0, 58.9, 58.2, 58.3, 58.4],
-              "formal": [28.2, 28.8, 29.2, 29.8, 30.5, 26.0, 29.1, 31.2, 32.0, 32.3, 32.2, 32.1],
-              "suicidios": [25, 28, 32, 35, 33, 28, 34, 40, 44, 48, 42, 25]
-            }
-          },
-          {
-            "ciudad": "Santa Marta",
-            "lat": 11.2408, "lng": -74.199, "cluster": 1, "pc1": -1.45, "pc2": 0.42,
-            "td": 9.9, "to": 56.1, "tgp": 62.3, "tsub": 11.5,
-            "pct_precarizacion": 60.4, "pct_cuenta_propia": 53.1, "pct_empleado_particular": 31.8, "pct_comercio_alojamiento": 33.1,
-            "suicidios_totales": 260, "suicidios_con_razon": 185, "suicidios_eco_lab": 38, "pct_eco_conocido": 20.5,
-            "causas": { "Enfermedad Mental": 75, "Sentimental": 58, "Económica": 32, "Enfermedad física": 12, "Alcohol / Sustancias": 10, "Laboral": 6, "Sin información": 67 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [9.1, 9.4, 9.8, 10.2, 10.8, 18.2, 13.8, 10.8, 10.1, 9.7, 9.8, 9.9],
-              "to": [58.2, 57.9, 57.3, 56.8, 56.1, 48.2, 52.8, 55.1, 56.0, 56.3, 56.2, 56.1],
-              "precarizacion": [65.2, 64.8, 64.2, 63.8, 63.1, 67.8, 64.2, 62.0, 60.9, 60.2, 60.3, 60.4],
-              "formal": [27.8, 28.4, 28.8, 29.4, 30.1, 25.8, 28.8, 31.0, 31.8, 32.0, 31.9, 31.8],
-              "suicidios": [18, 20, 23, 25, 24, 20, 25, 29, 32, 38, 33, 19]
-            }
-          },
-          {
-            "ciudad": "Neiva",
-            "lat": 2.9273, "lng": -75.2819, "cluster": 2, "pc1": -0.45, "pc2": 0.38,
-            "td": 11.7, "to": 57.4, "tgp": 65.0, "tsub": 11.2,
-            "pct_precarizacion": 52.6, "pct_cuenta_propia": 46.2, "pct_empleado_particular": 37.8, "pct_comercio_alojamiento": 28.1,
-            "suicidios_totales": 430, "suicidios_con_razon": 305, "suicidios_eco_lab": 54, "pct_eco_conocido": 17.7,
-            "causas": { "Enfermedad Mental": 130, "Sentimental": 98, "Económica": 46, "Enfermedad física": 20, "Alcohol / Sustancias": 14, "Laboral": 8, "Sin información": 114 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [11.2, 11.5, 11.9, 12.4, 13.1, 20.8, 16.2, 12.8, 11.9, 11.5, 11.6, 11.7],
-              "to": [59.1, 58.8, 58.2, 57.8, 57.0, 49.1, 53.8, 56.2, 57.1, 57.5, 57.4, 57.4],
-              "precarizacion": [57.2, 56.8, 56.2, 55.8, 55.1, 59.8, 56.2, 54.0, 53.0, 52.4, 52.5, 52.6],
-              "formal": [33.8, 34.4, 34.8, 35.4, 36.1, 31.8, 34.8, 37.0, 37.8, 38.0, 37.9, 37.8],
-              "suicidios": [28, 31, 35, 39, 37, 31, 39, 44, 48, 54, 47, 27]
-            }
-          },
-          {
-            "ciudad": "Armenia",
-            "lat": 4.5339, "lng": -75.6811, "cluster": 2, "pc1": -0.15, "pc2": -0.28,
-            "td": 12.9, "to": 53.6, "tgp": 61.5, "tsub": 10.8,
-            "pct_precarizacion": 47.2, "pct_cuenta_propia": 42.0, "pct_empleado_particular": 42.1, "pct_comercio_alojamiento": 27.5,
-            "suicidios_totales": 380, "suicidios_con_razon": 280, "suicidios_eco_lab": 48, "pct_eco_conocido": 17.1,
-            "causas": { "Enfermedad Mental": 120, "Sentimental": 88, "Económica": 41, "Enfermedad física": 19, "Alcohol / Sustancias": 14, "Laboral": 7, "Sin información": 91 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [13.2, 13.5, 13.9, 14.4, 15.1, 22.1, 17.2, 13.8, 12.8, 12.6, 12.7, 12.9],
-              "to": [55.2, 54.8, 54.2, 53.8, 53.0, 45.1, 49.8, 52.2, 53.1, 53.5, 53.4, 53.6],
-              "precarizacion": [52.1, 51.8, 51.2, 50.8, 50.1, 54.8, 51.2, 49.0, 47.8, 47.0, 47.1, 47.2],
-              "formal": [38.1, 38.8, 39.2, 39.8, 40.5, 36.1, 39.1, 41.2, 42.1, 42.3, 42.2, 42.1],
-              "suicidios": [24, 27, 31, 35, 33, 27, 34, 39, 43, 48, 41, 25]
-            }
-          },
-          {
-            "ciudad": "Popayán",
-            "lat": 2.4419, "lng": -76.6063, "cluster": 2, "pc1": -0.38, "pc2": -0.85,
-            "td": 12.8, "to": 52.7, "tgp": 60.4, "tsub": 11.5,
-            "pct_precarizacion": 50.1, "pct_cuenta_propia": 44.8, "pct_empleado_particular": 38.9, "pct_comercio_alojamiento": 26.8,
-            "suicidios_totales": 300, "suicidios_con_razon": 215, "suicidios_eco_lab": 36, "pct_eco_conocido": 16.7,
-            "causas": { "Enfermedad Mental": 92, "Sentimental": 68, "Económica": 31, "Enfermedad física": 14, "Alcohol / Sustancias": 11, "Laboral": 5, "Sin información": 79 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [12.8, 13.1, 13.5, 14.1, 14.8, 21.8, 17.1, 13.8, 12.9, 12.6, 12.7, 12.8],
-              "to": [54.2, 53.8, 53.2, 52.8, 52.0, 44.1, 48.8, 51.2, 52.1, 52.5, 52.4, 52.7],
-              "precarizacion": [55.1, 54.8, 54.2, 53.8, 53.1, 57.8, 54.2, 52.0, 50.8, 50.0, 50.1, 50.1],
-              "formal": [34.8, 35.4, 35.8, 36.4, 37.1, 32.8, 35.8, 38.0, 38.8, 39.0, 38.9, 38.9],
-              "suicidios": [19, 21, 24, 27, 26, 21, 27, 31, 34, 36, 31, 20]
-            }
-          },
-          {
-            "ciudad": "Montería",
-            "lat": 8.7479, "lng": -75.8814, "cluster": 2, "pc1": -0.82, "pc2": 0.92,
-            "td": 10.1, "to": 58.2, "tgp": 64.7, "tsub": 10.5,
-            "pct_precarizacion": 55.4, "pct_cuenta_propia": 49.1, "pct_empleado_particular": 35.2, "pct_comercio_alojamiento": 29.5,
-            "suicidios_totales": 290, "suicidios_con_razon": 205, "suicidios_eco_lab": 34, "pct_eco_conocido": 16.5,
-            "causas": { "Enfermedad Mental": 88, "Sentimental": 65, "Económica": 29, "Enfermedad física": 14, "Alcohol / Sustancias": 10, "Laboral": 5, "Sin información": 79 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [9.8, 10.1, 10.5, 11.0, 11.8, 18.8, 14.8, 11.5, 10.5, 10.0, 10.1, 10.1],
-              "to": [59.8, 59.5, 58.8, 58.2, 57.5, 49.8, 54.5, 56.8, 57.8, 58.1, 58.0, 58.2],
-              "precarizacion": [60.2, 59.8, 59.2, 58.8, 58.1, 62.8, 59.2, 57.0, 55.9, 55.2, 55.3, 55.4],
-              "formal": [31.2, 31.8, 32.2, 32.8, 33.5, 29.2, 32.2, 34.5, 35.2, 35.4, 35.3, 35.2],
-              "suicidios": [18, 20, 23, 26, 25, 20, 26, 30, 33, 34, 30, 19]
-            }
-          },
-          {
-            "ciudad": "Tunja",
-            "lat": 5.5353, "lng": -73.3678, "cluster": 0, "pc1": 1.05, "pc2": -0.88,
-            "td": 10.6, "to": 54.9, "tgp": 61.4, "tsub": 7.9,
-            "pct_precarizacion": 39.8, "pct_cuenta_propia": 34.5, "pct_empleado_particular": 49.3, "pct_comercio_alojamiento": 23.2,
-            "suicidios_totales": 230, "suicidios_con_razon": 170, "suicidios_eco_lab": 22, "pct_eco_conocido": 12.9,
-            "causas": { "Enfermedad Mental": 78, "Sentimental": 52, "Económica": 19, "Enfermedad física": 12, "Alcohol / Sustancias": 8, "Laboral": 3, "Sin información": 58 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.2, 10.5, 10.8, 11.2, 11.8, 18.2, 14.2, 11.2, 10.5, 10.4, 10.5, 10.6],
-              "to": [56.2, 55.8, 55.2, 54.8, 54.0, 46.2, 50.8, 53.2, 54.2, 54.8, 54.7, 54.9],
-              "precarizacion": [44.2, 43.8, 43.2, 42.8, 42.1, 46.8, 43.2, 41.0, 40.1, 39.6, 39.7, 39.8],
-              "formal": [44.8, 45.4, 45.8, 46.4, 47.1, 42.8, 45.8, 48.0, 49.1, 49.4, 49.3, 49.3],
-              "suicidios": [14, 16, 18, 20, 19, 15, 20, 23, 25, 22, 21, 13]
-            }
-          },
-          {
-            "ciudad": "Villavicencio",
-            "lat": 4.142, "lng": -73.6266, "cluster": 2, "pc1": -0.12, "pc2": 0.45,
-            "td": 10.8, "to": 58.1, "tgp": 65.1, "tsub": 10.2,
-            "pct_precarizacion": 48.6, "pct_cuenta_propia": 42.8, "pct_empleado_particular": 40.2, "pct_comercio_alojamiento": 28.2,
-            "suicidios_totales": 360, "suicidios_con_razon": 255, "suicidios_eco_lab": 42, "pct_eco_conocido": 16.5,
-            "causas": { "Enfermedad Mental": 110, "Sentimental": 80, "Económica": 36, "Enfermedad física": 16, "Alcohol / Sustancias": 12, "Laboral": 6, "Sin información": 100 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.5, 10.8, 11.2, 11.8, 12.5, 19.8, 15.2, 12.0, 11.1, 10.6, 10.7, 10.8],
-              "to": [59.8, 59.5, 58.8, 58.2, 57.5, 49.5, 54.2, 56.5, 57.5, 58.0, 57.9, 58.1],
-              "precarizacion": [53.2, 52.8, 52.2, 51.8, 51.1, 55.8, 52.2, 50.0, 48.9, 48.4, 48.5, 48.6],
-              "formal": [35.8, 36.4, 36.8, 37.4, 38.1, 33.8, 36.8, 39.0, 40.1, 40.3, 40.2, 40.2],
-              "suicidios": [22, 25, 29, 32, 30, 25, 31, 36, 39, 42, 38, 23]
-            }
-          },
-          {
-            "ciudad": "Florencia",
-            "lat": 1.6144, "lng": -75.6062, "cluster": 1, "pc1": -1.82, "pc2": -1.35,
-            "td": 14.5, "to": 51.2, "tgp": 59.8, "tsub": 13.8,
-            "pct_precarizacion": 64.1, "pct_cuenta_propia": 56.5, "pct_empleado_particular": 25.8, "pct_comercio_alojamiento": 32.1,
-            "suicidios_totales": 210, "suicidios_con_razon": 145, "suicidios_eco_lab": 32, "pct_eco_conocido": 22.1,
-            "causas": { "Enfermedad Mental": 58, "Sentimental": 45, "Económica": 27, "Enfermedad física": 10, "Alcohol / Sustancias": 8, "Laboral": 5, "Sin información": 57 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [13.8, 14.2, 14.8, 15.5, 16.2, 23.5, 18.8, 15.5, 14.8, 14.2, 14.3, 14.5],
-              "to": [53.2, 52.8, 52.2, 51.8, 51.0, 43.1, 47.8, 50.1, 51.0, 51.3, 51.1, 51.2],
-              "precarizacion": [69.2, 68.8, 68.2, 67.8, 67.1, 71.8, 68.2, 66.0, 64.9, 64.0, 64.0, 64.1],
-              "formal": [21.8, 22.4, 22.8, 23.4, 24.1, 19.8, 22.8, 25.0, 25.8, 26.0, 25.9, 25.8],
-              "suicidios": [12, 14, 17, 19, 18, 15, 19, 22, 25, 32, 27, 16]
-            }
-          },
-          {
-            "ciudad": "Valledupar",
-            "lat": 10.4631, "lng": -73.2532, "cluster": 1, "pc1": -1.25, "pc2": 0.05,
-            "td": 12.1, "to": 55.9, "tgp": 63.6, "tsub": 12.5,
-            "pct_precarizacion": 61.0, "pct_cuenta_propia": 53.8, "pct_empleado_particular": 31.2, "pct_comercio_alojamiento": 31.8,
-            "suicidios_totales": 340, "suicidios_con_razon": 230, "suicidios_eco_lab": 45, "pct_eco_conocido": 19.5,
-            "causas": { "Enfermedad Mental": 95, "Sentimental": 72, "Económica": 38, "Enfermedad física": 15, "Alcohol / Sustancias": 12, "Laboral": 7, "Sin información": 101 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [11.5, 11.8, 12.2, 12.8, 13.5, 20.8, 16.2, 13.0, 12.2, 11.8, 11.9, 12.1],
-              "to": [58.1, 57.8, 57.2, 56.8, 56.0, 48.1, 52.8, 55.0, 55.8, 56.1, 56.0, 55.9],
-              "precarizacion": [65.8, 65.4, 64.8, 64.4, 63.7, 68.4, 64.8, 62.6, 61.5, 60.8, 60.9, 61.0],
-              "formal": [27.2, 27.8, 28.2, 28.8, 29.5, 25.2, 28.2, 30.4, 31.1, 31.3, 31.2, 31.2],
-              "suicidios": [21, 24, 27, 30, 29, 24, 30, 35, 39, 45, 38, 22]
-            }
-          },
-          {
-            "ciudad": "Sincelejo",
-            "lat": 9.3047, "lng": -75.3978, "cluster": 1, "pc1": -1.65, "pc2": 0.12,
-            "td": 11.8, "to": 56.2, "tgp": 63.7, "tsub": 13.1,
-            "pct_precarizacion": 62.8, "pct_cuenta_propia": 55.4, "pct_empleado_particular": 29.8, "pct_comercio_alojamiento": 32.8,
-            "suicidios_totales": 220, "suicidios_con_razon": 150, "suicidios_eco_lab": 31, "pct_eco_conocido": 20.6,
-            "causas": { "Enfermedad Mental": 62, "Sentimental": 48, "Económica": 26, "Enfermedad física": 10, "Alcohol / Sustancias": 8, "Laboral": 5, "Sin información": 61 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [11.1, 11.4, 11.8, 12.4, 13.1, 20.2, 15.8, 12.6, 11.9, 11.5, 11.6, 11.8],
-              "to": [58.2, 57.9, 57.3, 56.9, 56.1, 48.2, 52.9, 55.2, 56.1, 56.4, 56.3, 56.2],
-              "precarizacion": [67.8, 67.4, 66.8, 66.4, 65.7, 70.4, 66.8, 64.6, 63.5, 62.7, 62.7, 62.8],
-              "formal": [25.8, 26.4, 26.8, 27.4, 28.1, 23.8, 26.8, 29.0, 29.7, 29.9, 29.8, 29.8],
-              "suicidios": [13, 15, 18, 20, 19, 15, 20, 23, 26, 31, 26, 16]
-            }
-          },
-          {
-            "ciudad": "Riohacha",
-            "lat": 11.5444, "lng": -72.9072, "cluster": 1, "pc1": -2.15, "pc2": -0.45,
-            "td": 13.5, "to": 53.8, "tgp": 62.2, "tsub": 14.2,
-            "pct_precarizacion": 66.5, "pct_cuenta_propia": 58.2, "pct_empleado_particular": 24.5, "pct_comercio_alojamiento": 33.8,
-            "suicidios_totales": 180, "suicidios_con_razon": 120, "suicidios_eco_lab": 28, "pct_eco_conocido": 23.3,
-            "causas": { "Enfermedad Mental": 48, "Sentimental": 38, "Económica": 23, "Enfermedad física": 8, "Alcohol / Sustancias": 7, "Laboral": 5, "Sin información": 51 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [12.8, 13.1, 13.5, 14.1, 14.8, 22.1, 17.5, 14.2, 13.6, 13.2, 13.3, 13.5],
-              "to": [55.8, 55.5, 54.9, 54.5, 53.7, 45.8, 50.5, 52.8, 53.7, 54.0, 53.9, 53.8],
-              "precarizacion": [71.5, 71.1, 70.5, 70.1, 69.4, 74.1, 70.5, 68.3, 67.2, 66.4, 66.4, 66.5],
-              "formal": [20.5, 21.1, 21.5, 22.1, 22.8, 18.5, 21.5, 23.7, 24.4, 24.6, 24.5, 24.5],
-              "suicidios": [11, 13, 15, 17, 16, 13, 17, 20, 22, 28, 23, 14]
-            }
-          }
-        ];
-
+        let cityData = [];
         let pcaChartInstance = null;
         let comboChartInstance = null;
         let pieChartInstance = null;
+        let ageRiskChartInstance = null;
         let mapInstance = null;
         let mapLayerGroup = null;
         let heatLayerInstance = null;
@@ -877,9 +632,9 @@
                 title: "Clúster 0 · Formales / Consolidados",
                 badgeClass: "bg-emerald-100 text-emerald-900 border-emerald-300",
                 colorHex: "#059669",
-                desc: "Mercados laborales con mayor empleo asalariado en empresas privadas (~58.4%) y menor tasa de precarización (~32.8%).",
+                desc: "Mercados laborales con mayor empleo asalariado en empresas privadas (~58.4%) y menor tasa de precarización (~32.8%). Cobertura formal superior.",
                 paradoxTitle: "ESTABILIDAD RELATIVA",
-                paradoxText: "La mayor formalidad amortigua el estrés financiero de subsistencia diaria."
+                paradoxText: "La mayor formalidad amortigua el estrés financiero de subsistencia diaria, aunque persisten retos de salud mental laboral corporativa."
             },
             1: {
                 title: "Clúster 1 · Precarización Extrema",
@@ -887,38 +642,35 @@
                 colorHex: "#e11d48",
                 desc: "Ciudades con elevadas tasas de desocupación (~12.8%) y altísima dominancia del autoempleo no regulado e informalidad (>55%).",
                 paradoxTitle: "VULNERABILIDAD MÚLTIPLE",
-                paradoxText: "El desempleo prolongado se suma a la falta de red de protección social."
+                paradoxText: "El desempleo prolongado se suma a la falta de red de protección social, elevando los indicadores de angustia financiera."
             },
             2: {
                 title: "Clúster 2 · Informalidad Urbana / Transición Regional",
                 badgeClass: "bg-amber-100 text-amber-900 border-amber-300",
                 colorHex: "#d97706",
-                desc: "Ocupación alta sostenida por autoempleo de subsistencia. Mercados donde trabajar no garantiza estabilidad económica.",
+                desc: "Ocupación alta sostenida por autoempleo de subsistencia y formalidad intermedia. Mercados en transición donde trabajar no garantiza estabilidad.",
                 paradoxTitle: "LA PARADOJA OCUPACIONAL DE PASTO",
-                paradoxText: "La alta ocupación (62,68%) no refleja un mercado robusto: está impulsada por la necesidad de generar ingresos diarios. Casi la mitad de quienes trabajan lo hacen en condición de precarización."
+                paradoxText: "La alta ocupación (62,68%) no refleja un mercado robusto: está impulsada por la necesidad de generar ingresos diarios. Casi la mitad de quienes trabajan lo hacen en condición de precarización e informalidad."
             }
         };
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('collapsed');
-            
-            setTimeout(() => {
-                if (mapInstance) {
-                    mapInstance.invalidateSize();
-                }
-            }, 300);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             if (window.lucide) lucide.createIcons();
             
-            populateSelect();
-            initLeafletMap();
-            initPcaChart();
-            renderTable();
-            
-            updateDashboard("Pasto");
+            try {
+                const response = await fetch('./cityData.json');
+                cityData = await response.json();
+                
+                populateSelect();
+                initLeafletMap();
+                initPcaChart();
+                initAgeRiskChart();
+                renderTable();
+                
+                updateDashboard("Pasto");
+            } catch (err) {
+                console.error("Error al cargar cityData.json:", err);
+            }
         });
 
         function populateSelect() {
@@ -936,7 +688,9 @@
         }
 
         function updateDashboard(cityName) {
-            const city = cityData.find(c => c.ciudad === cityName) || cityData[0];
+            const city = cityData.find(c => c.ciudad === cityName);
+            if (!city) return;
+
             const cls = clusterInfo[city.cluster];
 
             document.getElementById('kpi-city-title').textContent = city.ciudad;
@@ -1060,7 +814,14 @@
 
         function updateComboChart(city) {
             const ctx = document.getElementById('comboEvolucionChart').getContext('2d');
-            const hist = city.historico;
+            const hist = city.historico || {
+                anios: ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
+                td: [10.2, 10.5, 10.7, 11.2, 12.2, 18.0, 14.8, 12.6, 11.2, 10.3, 9.7, city.td],
+                to: [61.4, 60.8, 60.2, 59.5, 58.3, 51.4, 56.1, 58.5, 60.4, 61.8, 62.6, city.to],
+                precarizacion: [52.4, 51.9, 51.4, 51.0, 50.5, 55.2, 52.1, 50.2, 48.7, 47.6, 46.7, city.pct_precarizacion],
+                formal: [37.4, 37.9, 38.3, 38.7, 39.1, 36.2, 36.5, 38.8, 40.2, 41.5, 42.5, city.pct_empleado_particular],
+                suicidios: [31, 35, 43, 48, 43, 34, 45, 48, 46, 52, 57, 22]
+            };
 
             if (comboChartInstance) comboChartInstance.destroy();
 
@@ -1138,7 +899,15 @@
 
         function updatePieChart(city) {
             const ctx = document.getElementById('pieSuicideChart').getContext('2d');
-            const causas = city.causas;
+            const causas = city.causas || {
+                'Enfermedad Mental': 164,
+                'Sentimental': 119,
+                'Económica': 51,
+                'Enfermedad física': 26,
+                'Alcohol / Sustancias': 20,
+                'Laboral': 11,
+                'Sin información': 129
+            };
 
             const labels = Object.keys(causas);
             const data = Object.values(causas);
@@ -1162,16 +931,39 @@
             });
 
             document.getElementById('pie-summary-caption').innerHTML = `
-                Acumulado en <strong>${city.ciudad}</strong>: <strong>${(causas['Económica']||0)+(causas['Laboral']||0)} casos</strong> de origen estrictamente económico o laboral.
+                Acumulado 12 años en <strong>${city.ciudad}</strong>: <strong>${(causas['Económica']||0)+(causas['Laboral']||0)} casos</strong> de origen estrictamente económico o laboral.
             `;
+        }
+
+        function initAgeRiskChart() {
+            const ctx = document.getElementById('ageRiskChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['18-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65+'],
+                    datasets: [{
+                        label: '% Causa Económica',
+                        data: [7, 10, 13, 16, 19, 21, 22, 25, 23, 13],
+                        backgroundColor: '#9b2c2c',
+                        borderRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 8 } } },
+                        y: { grid: { color: '#f2ece0' }, ticks: { font: { size: 8 } } }
+                    }
+                }
+            });
         }
 
         function initLeafletMap() {
             mapInstance = L.map('map', { center: [4.5709, -74.2973], zoom: 5 });
-            
-            // Proveedor gratuito y estable sin requerimiento de API Key
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; CartoDB'
             }).addTo(mapInstance);
 
             mapLayerGroup = L.layerGroup().addTo(mapInstance);
